@@ -8,7 +8,9 @@ from .models import (
 
 @admin.register(TheUser)
 class TheUserAdmin(UserAdmin):
-    pass
+    list_display = ('username', 'email', 'role', 'is_staff', 'is_active')
+    list_filter = ('role', 'is_staff', 'is_active')
+    list_editable = ('role',)
     
 
 admin.site.register(Course)

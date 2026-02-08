@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}
-    <title></title>
-    {% endblock %}
+    <meta name="description" content="Open your class with Django">
+    <title> {% block title %} Open your class {% endblock %} </title>
     {% load static %}
     {% block css %}
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">

@@ -22,7 +22,10 @@ class TheUser(AbstractUser):
     )
 
 class Course(BaseTimeStamp):
-    name = models.CharField(max_length=200)
+    name = models.CharField(
+        max_length=200,
+        help_text='module de cours. ex: Python, Java, C++ ou C, etc.'
+    )
     teacher = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -34,8 +37,10 @@ class Course(BaseTimeStamp):
     # def can_access() if user is authenticated and user is 'student'
 
     def __str__(self):
-        return f' cours {self.name} du teacher {self.teacher.username}'
+        return f' COURS: {self.name} du prof: {self.teacher.username}'
 
+    class Meta:
+        verbose_name = 'Course'
 
 class Chapter(BaseTimeStamp):
     course = models.ForeignKey(
@@ -51,6 +56,7 @@ class Chapter(BaseTimeStamp):
     
     class Meta:
         ordering = ['order']
+        verbose_name_plural = 'Chapitre'
 
 class Lesson(BaseTimeStamp):
     chapter = models.ForeignKey(
@@ -94,4 +100,4 @@ class Enrollment(BaseTimeStamp):
                 name='unique_student_course_enrollment'
             )
         ]
-        verbose_name_plural = 'Cours reservés'
+        verbose_name_plural = 'Reservation'
