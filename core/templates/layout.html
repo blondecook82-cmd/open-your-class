@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title></title>
+    {% endblock %}
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div id="content">
+        <header class="header">
+            <h1>
+                Open-your-class
+            </h1>
+        </header>
+        <main class="main">
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer class="footer">
+            <p>
+                just open your class with django. easy. simply. powerfully | 2026/08/02.
+            </p>
+        </footer>
+    </div>
+    {% block extra_js %}
+    <script src="{% static 'js/layout.js' %}" defer></script>
+    {% endblock %}
+</body>
+</html>
